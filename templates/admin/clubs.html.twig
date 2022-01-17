@@ -1,4 +1,4 @@
-{% extends "base.html.twig" %}
+{% extends "admin/base.html.twig" %}
 
 {% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/books.css') }}">{% endblock stylesheets %}
 
@@ -16,6 +16,9 @@
                             <h3>{{ club.skatepark.town }} {{ club.skatepark.area }}</h3>
                         {% endif %}
                     </div>
+                    <a class="link" href="{{ path('admin_club', {"id": club.id}) }}">Voir le club</a>
+                    <a class="link" href="{{ path('admin_club_update', {"id": club.id}) }}">Modifier le club</a>
+                    <a class="link" href="{{ path('admin_club_delete', {"id": club.id}) }}">Supprimer le club</a>
                 </div>
             {% endfor %}
         </section>

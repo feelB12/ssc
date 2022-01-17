@@ -38,6 +38,16 @@ class Club
     private $zippcode;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $town;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $area;
+
+    /**
      * @ORM\ManyToOne(targetEntity=Skatepark::class, inversedBy="clubs")
      * @ORM\JoinColumn(onDelete="CASCADE")
      */
@@ -48,15 +58,6 @@ class Club
      */
     private $coverFilename;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $town;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $area;
 
     public function getId(): ?int
     {
@@ -134,4 +135,28 @@ class Club
 
         return $this;
     }
+    public function getSkatepark(): ?Skatepark
+    {
+        return $this->skatepark;
+    }
+
+    public function setSkatepark(?Skatepark $skatepark): self
+    {
+        $this->skatepark = $skatepark;
+
+        return $this;
+    }
+
+    public function getCoverFilename(): ?string
+    {
+        return $this->coverFilename;
+    }
+
+    public function setCoverFilename(?string $coverFilename): self
+    {
+        $this->coverFilename = $coverFilename;
+
+        return $this;
+    }
+
 }

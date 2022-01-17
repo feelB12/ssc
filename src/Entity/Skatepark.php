@@ -45,19 +45,20 @@ class Skatepark
     private $town;
 
     /**
-     * @ORM\OneToMany(targetEntity=Club::class, mappedBy="skatepark")
-     */
-    private $clubs;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
     private $area;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Club::class, mappedBy="skatepark")
+     */
+    private $clubs;
 
     public function __construct()
     {
         $this->clubs = new ArrayCollection();
     }
+
 
     public function getId(): ?int
     {
@@ -122,6 +123,19 @@ class Skatepark
 
         return $this;
     }
+
+    public function getArea(): ?string
+    {
+        return $this->area;
+    }
+
+    public function setArea(string $area): self
+    {
+        $this->area = $area;
+
+        return $this;
+    }
+
     /**
      * @return Collection|Club[]
      */
@@ -148,18 +162,6 @@ class Skatepark
                 $club->setSkatepark(null);
             }
         }
-
-        return $this;
-    }
-
-    public function getArea(): ?string
-    {
-        return $this->area;
-    }
-
-    public function setArea(string $area): self
-    {
-        $this->area = $area;
 
         return $this;
     }

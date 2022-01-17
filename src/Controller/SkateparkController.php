@@ -32,8 +32,4 @@ class SkateparkController extends AbstractController
             'skatepark' => $skatepark
         ]);
     }
-
-
-
-
 }

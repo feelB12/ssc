@@ -15,14 +15,19 @@ class DashboardController extends AbstractController
     /**
      * @Route("/admin", name="dashboard")
      */
-    public function dashboard(BookRepository $bookRepository, AuthorRepository $authorRepository)
+    public function dashboard(ClubRepository $clubRepository, SkateparkRepository $skateparkRepository, ShopRepository $shopRepository, SessionRepository $sessionRepository)
     {
-        $lastBooks = $bookRepository->findBy([], ['id' => 'DESC'], 3);
-        $lastAuthors = $authorRepository->findBy([], ['id' => 'DESC'], 3);
+        $lastSessions = $sessionRepository->findBy([], ['id' => 'DESC'], 3);
+        $lastSkateparks = $skateparkRepository->findBy([], ['id' => 'DESC'], 3);
+        $lastClubs = $clubRepository->findBy([], ['id' => 'DESC'], 3);
+        $lastShops = $shopRepository->findBy([], ['id' => 'DESC'], 3);
+
 
         return $this->render("admin/dashboard.html.twig", [
-            'lastBooks' => $lastBooks,
-            'lastAuthors' => $lastAuthors
+            'lastSessions' => $lastSessions,
+            'lastSkateparks' => $lastSkateparks,
+            'lastClubs' => $lastClubs,
+            'lastShops' => $lastShops
         ]);
     }
 
