@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}<link rel="stylesheet" href="{{ asset('css/books.css') }}">{% endblock stylesheets %}
+
+{% block main %}
+    <main>
+        <section class="section">
+
+            {% for skatepark in skateparks %}
+                <div class="card">
+                    <div class="card-text">
+                        <h2>{{ skatepark.title }} {{ skatepark.lastName }}</h2>
+                        <h3>{{ skatepark.content}}</h3>
+                    </div>
+                </div>
+            {% endfor %}
+        </section>
+    </main>
+{% endblock main%}
