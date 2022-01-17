@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Repository\SkateparkRepository;
 use App\Repository\ClubRepository;
 use App\Repository\ShopRepository;
-use App\Repository\SessionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
