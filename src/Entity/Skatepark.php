@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\SkateparkRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -36,6 +38,26 @@ class Skatepark
      * @ORM\Column(type="integer")
      */
     private $zippcode;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $town;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Club::class, mappedBy="skatepark")
+     */
+    private $clubs;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $area;
+
+    public function __construct()
+    {
+        $this->clubs = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -86,6 +108,58 @@ class Skatepark
     public function setZippcode(int $zippcode): self
     {
         $this->zippcode = $zippcode;
+
+        return $this;
+    }
+    public function getTown(): ?string
+    {
+        return $this->town;
+    }
+
+    public function setTown(int $town): self
+    {
+        $this->town = $town;
+
+        return $this;
+    }
+    /**
+     * @return Collection|Club[]
+     */
+    public function getClubs(): Collection
+    {
+        return $this->clubs;
+    }
+
+    public function addClub(Club $club): self
+    {
+        if (!$this->clubs->contains($club)) {
+            $this->clubs[] = $club;
+            $club->setSkatepark($this);
+        }
+
+        return $this;
+    }
+
+    public function removeClub(Club $club): self
+    {
+        if ($this->clubs->removeElement($club)) {
+            // set the owning side to null (unless already changed)
+            if ($club->getSkatepark() === $this) {
+                $club->setSkatepark(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getArea(): ?string
+    {
+        return $this->area;
+    }
+
+    public function setArea(string $area): self
+    {
+        $this->area = $area;
 
         return $this;
     }

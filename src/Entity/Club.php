@@ -23,19 +23,40 @@ class Club
     private $title;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=1000)
      */
     private $content;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $adress;
+    private $address;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $zippcode;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Skatepark::class, inversedBy="clubs")
+     * @ORM\JoinColumn(onDelete="CASCADE")
+     */
+    private $skatepark;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $coverFilename;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $zippcode;
+    private $town;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $area;
 
     public function getId(): ?int
     {
@@ -66,14 +87,14 @@ class Club
         return $this;
     }
 
-    public function getAdress(): ?string
+    public function getAddress(): ?string
     {
-        return $this->adress;
+        return $this->address;
     }
 
-    public function setAdress(string $adress): self
+    public function setAddress(string $address): self
     {
-        $this->adress = $adress;
+        $this->address = $address;
 
         return $this;
     }
@@ -86,6 +107,30 @@ class Club
     public function setZippcode(string $zippcode): self
     {
         $this->zippcode = $zippcode;
+
+        return $this;
+    }
+
+    public function getTown(): ?string
+    {
+        return $this->town;
+    }
+
+    public function setTown(string $town): self
+    {
+        $this->town = $town;
+
+        return $this;
+    }
+
+    public function getArea(): ?string
+    {
+        return $this->area;
+    }
+
+    public function setArea(string $area): self
+    {
+        $this->area = $area;
 
         return $this;
     }

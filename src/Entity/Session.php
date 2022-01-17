@@ -37,6 +37,21 @@ class Session
      */
     private $zippcode;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $address;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $town;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $area;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -86,6 +101,42 @@ class Session
     public function setZippcode(int $zippcode): self
     {
         $this->zippcode = $zippcode;
+
+        return $this;
+    }
+
+    public function getAddress(): ?string
+    {
+        return $this->address;
+    }
+
+    public function setAddress(string $address): self
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    public function getTown(): ?string
+    {
+        return $this->town;
+    }
+
+    public function setTown(string $town): self
+    {
+        $this->town = $town;
+
+        return $this;
+    }
+
+    public function getArea(): ?string
+    {
+        return $this->area;
+    }
+
+    public function setArea(string $area): self
+    {
+        $this->area = $area;
 
         return $this;
     }
