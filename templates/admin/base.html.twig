@@ -1,0 +1,69 @@
+<!--Dans un nouveau .html.twig, que je nomme base.html.twig, j'intègre mon header et mon footer
+Cela va me permettre de conserver le même header et le même footer dans chacune de mes pages,
+et donc d'éviter de les copier à chaque fois sur une page.
+Cette page est vulgairement mon gabarit.-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!--Dans le title de ma page base, j'appelle la fonction block metatitle qui va me permettre
+    d'afficher mon metatitle sur toutes les pages de mon site-->
+    <title>{% block metatitle %} Admin | Le Skateboard Social Club{% endblock metatitle%}</title>
+    <!--J'utilise la balise link et la fonction asset pour rattacher ma feuille de style à mon html-->
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bookdetails.css') }}">
+
+</head>
+<body>
+<header class="header">
+    <h1>Le Skateboard Social Club</h1>
+    <nav class="nav-bar">
+        <ul class="menu">
+            <li class="main-menu-element">
+                <a href="{{ path('dashboard') }}">Dashboard</a>
+            </li>
+            <li class="main-menu-element">
+                <a href="{{ path('admin_sessions') }}">Les sessions</a>
+            </li>
+            <li class="main-menu-element">
+                <a href="{{ path('admin_skateparks') }}">Les skateparks</a>
+            </li>
+            <li class="main-menu-element">
+                <a href="{{ path('admin_clubs') }}">Les clubs</a>
+            </li>
+            <li class="main-menu-element">
+                <a href="{{ path('admin_shops') }}">Les shops</a>
+            </li>
+            <li class="main-menu-element">
+                <a href="{{ path('app_logout') }}">Déconnexion</a>
+            </li>
+        </ul>
+
+        <p>Vous êtes connecté en tant que {{ app.user.email }}</p>
+
+        <form action="{{ path('admin_search_clubs') }}">
+            <input type="text" name="q">
+            <input type="submit">
+        </form>
+    </nav>
+</header>
+<main>
+
+    {# si des messages flashes de type 'success' ont été ajoutés, on les affiche #}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {% block main %}{% endblock main %}
+
+    <!--J'appelle la fonction Extends pour indiquer que j'intègre le contenu de-->
+    <!--cette page dans mon fichier de base "base.html.twig"-->
+    <!--Grâce à la fonction "block", j'intègre le contenu de mon "Main".-->
+
+</main>
+<footer class="footer">
+</footer>
+</body>
+</html>

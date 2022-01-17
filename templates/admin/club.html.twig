@@ -1,3 +1,4 @@
+
 {% extends "admin/base.html.twig" %}
 
 {% block stylesheets %}
@@ -10,10 +11,10 @@
         {#            <img class="book-image" src="{{ book.image }}" title="{{ book.title }}" alt="photo de la couverture du livre">#}
         {#        </div>#}
         <div class="card-text">
-            <h2>{{ shop.title }}</h2>
-            <h3>{{ shop.content }}</h3>
-            {% if shop.skatepark %}
-                <h3>{{ shop.skatepark.town }} {{ shop.skatepark.area }}</h3>
+            <h2>{{ club.title }}</h2>
+            <h3>{{ club.content }}</h3>
+            {% if club.skatepark %}
+                <h3>{{ club.skatepark.town }} {{ club.skatepark.area }}</h3>
             {% endif %}
         </div>
     </article>

@@ -1,0 +1,38 @@
+{% extends "admin/base.html.twig" %}
+
+{% block main %}
+
+    {{ form_start(clubForm) }}
+
+    {{ form_label(clubForm.title, 'titre', {
+        'label_attr': {
+            'class': 'testLabelClass'
+        }
+    }) }}
+
+    {{ form_widget(clubForm.title, {
+        'attr': {
+            'class': 'testClass'
+        }
+    }) }}
+
+    {{ form_label(clubForm.content) }}
+    {{ form_widget(clubForm.content) }}
+
+    {{ form_label(clubForm.addess) }}
+    {{ form_widget(clubForm.addess) }}
+
+    {{ form_label(clubForm.town) }}
+    {{ form_widget(clubForm.town) }}
+
+    {{ form_label(clubForm.area) }}
+    {{ form_widget(clubForm.area) }}
+
+    {{ form_label(clubForm.skatepark) }}
+    {{ form_widget(clubForm.skatepark) }}
+
+    {{ form_widget(clubForm.submit) }}
+
+    {{ form_end(clubForm) }}
+
+{% endblock %}
